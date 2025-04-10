@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery with Lightbox</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .gallery-img {
+      transition: transform 0.3s ease;
+    }
+    .gallery-img:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+
+  <h1 class="text-3xl font-bold text-center mb-8">Image Gallery</h1>
+
+  <!-- Image Gallery Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <!-- Image 1 -->
+    <figure class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openLightbox('nature.jpg')">
+      <img src="nature.jpg" alt="Nature" class="w-full h-48 object-cover gallery-img">
+      <figcaption class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
+        <p class="font-medium">Nature Landscape</p>
+        <p class="text-sm opacity-80">Click to enlarge</p>
+      </figcaption>
+    </figure>
+
+    <!-- Image 2 -->
+    <figure class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openLightbox('city.jpg')">
+      <img src="city.jpg" alt="City" class="w-full h-48 object-cover gallery-img">
+      <figcaption class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
+        <p class="font-medium">City Skyline</p>
+        <p class="text-sm opacity-80">Click to enlarge</p>
+      </figcaption>
+    </figure>
+
+    <!-- Image 3 -->
+    <figure class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openLightbox('animal.jpg')">
+      <img src="animal.jpg" alt="Animal" class="w-full h-48 object-cover gallery-img">
+      <figcaption class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
+        <p class="font-medium">Wild Animal</p>
+        <p class="text-sm opacity-80">Click to enlarge</p>
+      </figcaption>
+    </figure>
+
+    <!-- Image 4 -->
+    <figure class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openLightbox('food.jpg')">
+      <img src="food.jpg" alt="Food" class="w-full h-48 object-cover gallery-img">
+      <figcaption class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
+        <p class="font-medium">Gourmet Food</p>
+        <p class="text-sm opacity-80">Click to enlarge</p>
+      </figcaption>
+    </figure>
+
+    <!-- Image 5 -->
+    <figure class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openLightbox('architecture.jpg')">
+      <img src="architecture.jpg" alt="Architecture" class="w-full h-48 object-cover gallery-img">
+      <figcaption class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
+        <p class="font-medium">Modern Architecture</p>
+        <p class="text-sm opacity-80">Click to enlarge</p>
+      </figcaption>
+    </figure>
+
+    <!-- Image 6 -->
+    <figure class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openLightbox('technology.jpg')">
+      <img src="technology.jpg" alt="Technology" class="w-full h-48 object-cover gallery-img">
+      <figcaption class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
+        <p class="font-medium">Technology</p>
+        <p class="text-sm opacity-80">Click to enlarge</p>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center hidden">
+    <div class="relative max-w-4xl w-full mx-4">
+      <img id="lightbox-img" src="" alt="" class="w-full max-h-[80vh] object-contain">
+      <div id="lightbox-caption" class="text-white text-center mt-4 text-lg"></div>
+    </div>
+  </div>
+
+  <script>
+    function openLightbox(imgSrc, caption) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      
+      lightboxImg.src = imgSrc;
+      lightboxImg.alt = caption;
+      lightboxCaption.textContent = caption;
+      lightbox.classList.remove('hidden');
+      // to stop scrolling
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close lightbox when clicking outside the image
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) {
+        console.log(e);
+        
+        document.getElementById('lightbox').classList.add('hidden');
+        // Re-enable scrolling
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+</body>
+</html>
