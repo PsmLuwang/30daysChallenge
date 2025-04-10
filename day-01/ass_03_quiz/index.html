@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>ass_03_quiz</title>
+</head>
+<body class="bg-gray-900 max-h-[100dvh] w-full px-3">
+
+  <!-- Result Popup (hidden by default) -->
+  <div id="resultPopup" class="fixed inset-0 bg-black/80 bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-gray-800 p-5 rounded-lg max-w-md w-full mx-3">
+      <h2 id="resultMessage" class="text-2xl font-bold mb-4"></h2>
+      <p id="correctAnswer" class="hidden text-amber-500 mb-4">The correct answer is: <span class="font-bold">JavaScript</span></p>
+      <button onclick="closePopup()" class="bg-amber-500 text-white px-4 py-2 rounded font-bold w-full">Close</button>
+    </div>
+  </div>
+
+  <section class="bg-gray-800 max-w-100 m-auto relative px-5 py-7 mt-30 rounded-[10px] text-center text-white">
+    <div class="bg-blue-500 absolute h-13 w-13 p-1 border-[6px] border-gray-900 rounded-[50%] top-0 left-[50%] translate-y-[-50%] translate-x-[-50%] font-bold text-[1.3rem]">
+      <h1 class="bg-gray-800 h-full grid items-center rounded-[50%]">1</h1>
+    </div>
+    <h1>Which programming language can be used in both Frontend and Backend development?</h1>
+  </section>
+
+  <form class="max-w-100 m-auto mt-5 text-white flex flex-col gap-3" action="POST">
+    <!-- Option 1 -->
+    <div>
+      <input type="radio" id="option1" name="quiz-option" class="hidden peer" value="JavaScript">
+      <label for="option1" class="flex items-center rounded-[8px] h-10 border-[2px] border-gray-700 peer-checked:border-amber-500 peer-checked:text-amber-500 w-full pl-4 font-semibold cursor-pointer">
+        Python
+      </label>
+    </div>
+    
+    <!-- Option 2 -->
+    <div>
+      <input type="radio" id="option2" name="quiz-option" class="hidden peer" value="JavaScript">
+      <label for="option2" class="flex items-center rounded-[8px] h-10 border-[2px] border-gray-700 peer-checked:border-amber-500 peer-checked:text-amber-500 w-full pl-4 font-semibold cursor-pointer">
+        JavaScript
+      </label>
+    </div>
+
+    <!-- Option 3 -->
+    <div>
+      <input type="radio" id="option3" name="quiz-option" class="hidden peer" value="C#">
+      <label for="option3" class="flex items-center rounded-[8px] h-10 border-[2px] border-gray-700 peer-checked:border-amber-500 peer-checked:text-amber-500 w-full pl-4 font-semibold cursor-pointer">
+        C#
+      </label>
+    </div>
+
+    <!-- Option 4 -->
+    <div>
+      <input type="radio" id="option4" name="quiz-option" class="hidden peer" value="Java">
+      <label for="option4" class="flex items-center rounded-[8px] h-10 border-[2px] border-gray-700 peer-checked:border-amber-500 peer-checked:text-amber-500 w-full pl-4 font-semibold cursor-pointer">
+        Java
+      </label>
+    </div>
+    
+    <button type="button" onclick="checkAnswer()" class="bg-amber-500 h-10 rounded-[8px] font-bold">Submit</button>
+  </form>
+
+  <script>
+    function checkAnswer() {
+      const selectedOption = document.querySelector('input[name="quiz-option"]:checked');
+      const resultPopup = document.getElementById('resultPopup');
+      const resultMessage = document.getElementById('resultMessage');
+      const correctAnswer = document.getElementById('correctAnswer');
+
+      if (!selectedOption) {
+        resultMessage.textContent = "Please select an answer!";
+        correctAnswer.classList.add('hidden');
+        resultPopup.classList.remove('hidden');
+        return;
+      }
+
+      if (selectedOption.value === "JavaScript") {
+        resultMessage.textContent = "Correct!";
+        resultMessage.className = "text-2xl font-bold mb-4 text-green-500";
+        correctAnswer.classList.add('hidden');
+      } else {
+        resultMessage.textContent = "Incorrect!";
+        resultMessage.className = "text-2xl font-bold mb-4 text-red-500";
+        correctAnswer.classList.remove('hidden');
+      }
+
+      resultPopup.classList.remove('hidden');
+    }
+
+    function closePopup() {
+      document.getElementById('resultPopup').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
