@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>ass_01_portfolio</title>
+
+  <!-- //// dependencies //// -->
+  <!-- tailwind css -->
+  <!-- font awesome -->
+</head>
+
+<body class="bg-gray-900 text-white/80">
+
+  <!-- header -->
+  <header class="flex max-sm:flex-col max-sm:items-center justify-between p-5 bg-gray-800 text-amber-500">
+    <h1><b>Salam Priyansu Meitei</b></h1>
+
+    <!-- nav at the top right -->
+    <nav class="flex gap-4">
+      <a href="#about">About</a>
+      <a href="#project">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- about me -->
+  <section id="about" class="p-5 text-center max-w-250 mx-auto flex flex-col gap-4">
+    <h1 class="text-amber-500 mb-2">
+      <b>About me:</b>
+    </h1>
+
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio ipsum exercitationem nisi, nam voluptatibus reprehenderit eaque? Modi esse iure soluta qui sunt corrupti ad! Amet sapiente corrupti provident maxime ea?
+      Doloremque a repellendus dolorem, consequatur maiores perferendis nihil natus aut beatae, officiis impedit distinctio esse, qui doloribus non praesentium ex architecto maxime quaerat alias soluta earum minus molestias. Harum, necessitatibus.
+    </p>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ipsa. Eveniet autem ducimus, pariatur distinctio quaerat commodi quidem dolorem. Possimus dolores fugiat deleniti laboriosam necessitatibus doloribus ipsa perspiciatis autem itaque?
+      Natus quod illum facere incidunt reiciendis ad provident quo exercitationem vero, fuga assumenda nobis. Accusamus aliquid ratione corrupti ducimus porro ab iure aliquam fugiat. Magni quas illo saepe quis cupiditate.
+    </p>
+  </section>
+
+  <!-- projects -->
+  <section id="project" class="p-5">
+    <h1 class="text-amber-500 mb-4 text-center">
+      <b>Projects:</b>
+    </h1>
+
+    <!-- project container -->
+    <div class="flex gap-4 justify-center max-sm:flex-col max-sm:items-center">
+      <div class="max-w-80">
+        <a href="#">
+          <img src="images.jpg" alt="project-thumbnail"
+            class="rounded-[10px]"
+          >
+        </a>
+        <p class="text-[0.8rem] text-justify mt-3">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio ipsum exercitationem nisi, nam voluptatibus reprehenderit eaque?
+        </p>
+      </div>
+      <div class="max-w-80">
+        <a href="#">
+          <img src="images.jpg" alt="project-thumbnail"
+            class="rounded-[10px]"
+          >
+        </a>
+        <p class="text-[0.8rem] text-justify mt-3">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio ipsum exercitationem nisi, nam voluptatibus reprehenderit eaque?
+        </p>
+      </div>
+      <div class="max-w-80">
+        <a href="#">
+          <img src="images.jpg" alt="project-thumbnail"
+            class="rounded-[10px]"
+          >
+        </a>
+        <p class="text-[0.8rem] text-justify mt-3">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio ipsum exercitationem nisi, nam voluptatibus reprehenderit eaque?
+        </p>
+      </div>
+  </section>
+
+  <!-- contact form -->
+   <section id="contact" class="p-5 max-w-200 mx-auto text-center">
+    <h1 class="text-amber-500 mb-4 text-center">
+      <b>Contact:</b>
+    </h1>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque voluptate saepe consectetur dolor voluptates numquam ipsum sequi voluptas vitae nobis ipsam animi aspernatur est illum consequatur dolorem provident, repellat maiores!
+    </p>
+
+    <!-- form for leaving messages -->
+    <form action="/submit" method="POST" class="p-5 rounded-[8px] bg-gray-800 flex flex-col gap-4 mt-5">
+      <h1 class="text-amber-500 mb-2">
+        <b>Leave a message</b>
+      </h1>
+       
+      <div class="bg-gray-700 rounded-[4px] relative">
+        <i class="fa-solid fa-user absolute top-[50%] left-[10px] translate-y-[-50%] text-amber-500"></i>
+        <input type="text" placeholder="Enter your name" class="w-full py-1 pr-1 pl-8 outline-amber-500">
+      </div>
+      <div class="bg-gray-700 rounded-[4px] relative">
+        <i class="fa-solid fa-envelope absolute top-[50%] left-[10px] translate-y-[-50%] text-amber-500"></i>
+        <input type="email" placeholder="Enter your email" class="w-full py-1 pr-1 pl-8 outline-amber-500">
+      </div>
+      <div class="rounded-[4px] relative">
+        <i class="fa-solid fa-comment absolute top-[9px] left-[10px] text-amber-500"></i>
+        <textarea placeholder="Enter your message" name="message" id="message"
+          class="w-full py-1 pr-1 pl-8 rounded-[4px] bg-gray-700 outline-amber-500 min-h-30"
+        ></textarea>
+      </div>
+
+      <!-- submit the form -->
+      <div class="bg-amber-500 rounded-[4px] flex justify-center items-center gap-1">
+        <input type="submit" value="Send" class="rounded-[4px] p-1 font-semibold">
+        <i class="fa-solid fa-paper-plane"></i>
+      </div>
+    </form>
+  </section>
+
+  <!-- footer -->
+  <footer class="bg-gray-800 p-5">
+    <h1 class="text-amber-500 mb-4 text-center">
+      <b>Contact info:</b>
+    </h1>
+
+    <!-- contact info -->
+    <div class="h-8 flex justify-center items-center gap-1">
+      <i class="fa-solid fa-envelope text-amber-500"></i>
+      <p class="text-[0.8rem]">
+        spriyansumeitei@gmail.com
+      </p>
+    </div>
+    <div class="h-8 flex justify-center items-center gap-1">
+      <i class="fa-solid fa-phone text-amber-500"></i>
+      <p class="text-[0.8rem]">
+        +91-7005194248
+      </p>
+    </div>
+    <div class="h-8 flex justify-center items-center gap-1">
+      <i class="fa-brands fa-whatsapp text-amber-500"></i>
+      <p class="text-[0.8rem]">
+        +91-7005194248
+      </p>
+    </div>
+
+    <!-- social media links -->
+    <div class="h-8 flex justify-center items-center gap-2 text-[1.2rem] mt-5 text-amber-500">
+      <a href="https://www.instagram.com" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com" target="_blank">
+        <i class="fa-brands fa-square-facebook"></i>
+      </a>
+      <a href="https://www.twitter.com" target="_blank">
+        <i class="fa-brands fa-twitter"></i>
+      </a>
+      <a href="https://www.youtube.com" target="_blank">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
