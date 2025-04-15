@@ -1,0 +1,9 @@
+@media (max-width: 900px) {
+  .resizeMain {
+    margin-left: 80px;
+    max-width: calc(100% - 80px);
+    background: red;
+  }
+  
+}
+
