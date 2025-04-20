@@ -118,19 +118,82 @@
     const list = document.getElementById("list");
 
 
-    // Function to format duration in seconds to MM:SS
+    // // Function to format duration in seconds to MM:SS
+    // function formatDuration(seconds) {
+    //   const minutes = Math.floor(seconds / 60);
+    //   const remainingSeconds = Math.floor(seconds % 60);
+    //   return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    // }
+
+    // for (let i = 0; i < playlist.length; i++) {
+    //   // Create audio element to get duration
+    //   const audio = new Audio(playlist[i].src);
+      
+    //   audio.onloadedmetadata = function() {
+    //     const duration = formatDuration(audio.duration);
+
+    //     const template = `
+    //       <li class="track-item py-4 px-3 rounded-lg">
+    //         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    //           <div class="flex items-center gap-4">
+    //             <span class="text-slate-400 font-mono w-8 text-center">${(i+1).toString().padStart(2, '0')}</span>
+    //             <div>
+    //               <h3 class="font-medium">${playlist[i].name}</h3>
+    //               <p class="text-sm text-slate-400">${playlist[i].singer}</p>
+    //             </div>
+    //           </div>
+    //           <div class="flex items-center gap-4">
+    //             <span class="text-slate-400 text-sm">${duration}</span>
+    //             <audio controls class="w-100 max-sm:w-full h-10">
+    //               <source src="${playlist[i].src}" type="audio/mpeg">
+    //             </audio>
+    //           </div>
+    //         </div>
+    //       </li>
+    //     `;
+        
+    //     list.innerHTML += template;
+    //   }
+    // }
+    
+
     function formatDuration(seconds) {
       const minutes = Math.floor(seconds / 60);
       const remainingSeconds = Math.floor(seconds % 60);
       return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
     }
 
+    // Create an array to store all the music
+    const loadPromises = [];
+
     for (let i = 0; i < playlist.length; i++) {
       // Create audio element to get duration
       const audio = new Audio(playlist[i].src);
       
-      audio.onloadedmetadata = function() {
-        const duration = formatDuration(audio.duration);
+      const loadPromise = new Promise((resolve) => {
+        audio.onloadedmetadata = function() {
+          resolve({
+            index: i,
+            duration: audio.duration
+          });
+        };
+        audio.onerror = function() {
+          resolve({
+            index: i,
+            duration: 0
+          });
+        };
+      });
+      
+      loadPromises.push(loadPromise);
+    }
+
+    Promise.all(loadPromises).then((results) => {
+      results.sort((a, b) => a.index - b.index);
+      
+      results.forEach((result) => {
+        const i = result.index;
+        const duration = formatDuration(result.duration);
 
         const template = `
           <li class="track-item py-4 px-3 rounded-lg">
@@ -153,9 +216,8 @@
         `;
         
         list.innerHTML += template;
-      }
-    }
-    
+      });
+    });
     
   </script>
 </body>
