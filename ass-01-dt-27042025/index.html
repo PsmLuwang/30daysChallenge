@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management System</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body class="bg-sky-50">
+  <div class="bg-white w-[calc(100%-30px)] max-w-250 mx-auto my-5 rounded-[6px] p-4 shadow-xl">
+    <h1 class="font-black text-3xl max-sm:text-2xl text-center">Task Manager</h1>
+
+    <!-- Task Input Section -->
+    <div class="grid grid-cols-[2fr_2fr_1fr_1fr] max-sm:grid-cols-1 gap-2 my-5">
+      <input type="text" id="taskTitleInput" placeholder="Task title..." required
+        class="border border-gray-400 rounded-[4px] h-10 px-2"
+      >
+      <input type="text" id="taskDescInput" placeholder="Task description..."
+        class="border border-gray-400 rounded-[4px] h-10 px-2"
+      >
+      <button id="addTaskButton" 
+        class="bg-green-600 text-white rounded-[4px] hover:cursor-pointer h-10">
+        Add Task
+      </button>
+      <button id="deleteTaskButton" 
+        class="bg-red-500 text-white rounded-[4px] hover:cursor-pointer h-10">
+        Clear All
+      </button>
+    </div>
+
+    <!-- Filter Section -->
+    <div>
+      <label for="filterSelect" class="font-semibold">Filter:</label>
+      <select id="filterSelect" class="bg-blue-50 rounded-[4px] p-1 hover:cursor-pointer outline-none">
+        <option value="all">All Tasks</option>
+        <option value="completed">Completed Tasks</option>
+        <option value="pending">Pending Tasks</option>
+      </select>
+    </div>
+
+    <!-- Task List Section -->
+    <ul id="taskList" class="flex flex-col gap-2 mt-4">
+
+    </ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
