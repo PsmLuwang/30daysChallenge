@@ -77,15 +77,15 @@ function displayTasks() {
     }
     
     // Create and append task items
-    filteredTasks.forEach(task => {
+    filteredTasks.reverse().forEach(task => {
         taskList.innerHTML += `
-          <li class="bg-blue-50/60 p-2 rounded-[4px] border-l-[4px] ${task.completed ? 'border-red-500' : 'border-green-500'} shadow-md relative cursor-pointer hover:bg-blue-100/70 hover:translate-x-1 transition duration-200 ease-in-out">
+          <li class="bg-blue-50/60 p-2 rounded-[4px] border-l-[4px] ${task.completed ? 'border-green-500' : 'border-red-500'} shadow-md relative cursor-pointer hover:bg-blue-100/70 hover:translate-x-1 transition duration-200 ease-in-out">
             <p class="font-bold sm:font-semibold text-xl w-[calc(100%-80px)]">${task.title}</p>
             <p class="text-gray-500 text-[0.9rem]">${task.description}</p>
             <p class="text-[0.9rem]">Created at: ${new Date(task.createdAt).toLocaleString()}</p>
             <div class="absolute top-[8px] right-[10px] flex gap-1">
                 <button class="border border-gray-300 inset-shadow-sm h-7 w-7 rounded-[4px] bg-white cursor-pointer" onclick="toggleTaskCompletion(${task.id})">
-                    ${task.completed ? '<i class="fa-solid fa-hourglass-half"></i>' : '<i class="fa-solid fa-circle-check text-green-500"></i>'}
+                    ${task.completed ? '<i class="fa-solid fa-circle-check text-green-500"></i>' : '<i class="fa-solid fa-hourglass-half"></i>'}
                 </button>
                 <p>:</p>
                 <button class="border border-blue-50 h-7 w-7 rounded-[4px] bg-red-500 text-white text-[0.9rem] cursor-pointer" onclick="deleteTask(${task.id})"><i class="fa-regular fa-trash-can"></i></button>
