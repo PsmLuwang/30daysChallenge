@@ -80,9 +80,9 @@ function displayTasks() {
     filteredTasks.forEach(task => {
         taskList.innerHTML += `
           <li class="bg-blue-50/60 p-2 rounded-[4px] border-l-[4px] ${task.completed ? 'border-red-500' : 'border-green-500'} shadow-md relative cursor-pointer hover:bg-blue-100/70 hover:translate-x-1 transition duration-200 ease-in-out">
-            <p class="font-semibold text-xl w-[calc(100%-80px)]">${task.title}</p>
-            <p class="text-gray-500">${task.description}</p>
-            <p>Created at: ${new Date(task.createdAt).toLocaleString()}</p>
+            <p class="font-bold sm:font-semibold text-xl w-[calc(100%-80px)]">${task.title}</p>
+            <p class="text-gray-500 text-[0.9rem]">${task.description}</p>
+            <p class="text-[0.9rem]">Created at: ${new Date(task.createdAt).toLocaleString()}</p>
             <div class="absolute top-[8px] right-[10px] flex gap-1">
                 <button class="border border-gray-300 inset-shadow-sm h-7 w-7 rounded-[4px] bg-white cursor-pointer" onclick="toggleTaskCompletion(${task.id})">
                     ${task.completed ? '<i class="fa-solid fa-hourglass-half"></i>' : '<i class="fa-solid fa-circle-check text-green-500"></i>'}
@@ -97,7 +97,7 @@ function displayTasks() {
 
 // Function to delete a task
 function deleteTask(taskId) {
-  if (taskId == "all") {
+  if (taskId == "all" && confirm('Are you sure you want to clear all the tasks?')) {
     tasks = [];
     saveTasksToLocalStorage();
     displayTasks();
